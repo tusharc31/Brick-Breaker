@@ -279,31 +279,34 @@ def check_and_adjust():
         bricks.clear_all_bricks()
 
         if player.stats.level==1:
-            player.stats.level==player.stats.level+1
-            bricks.display_level2_bricks()
+            player.stats.status = 'P'
+            player.stats.level=2
+            bricks.display_level2_brick()
             powerups.delete_super_power
-            slider.slider.length = 40
-            slider.slider.x_pos = 25
-            slider.slider.y_pos = 34
-            ball.ball.x_vel = 2
-            ball.ball.y_vel = -1
-            ball.ball.x_pos = 30
-            ball.ball.y_pos = 33
+            slider.game_slider.length = 40
+            slider.game_slider.x_pos = 20
+            slider.game_slider.y_pos = 34
+            ball.game_ball.x_vel = -2
+            ball.game_ball.y_vel = -1
+            ball.game_ball.x_pos = 25
+            ball.game_ball.y_pos = 33
             
 
-        if player.stats.level==2:
-            player.stats.level==player.stats.level+1
-            bricks.display_level3_bricks()
+        elif player.stats.level==2:
+            player.stats.status = 'P'
+            player.stats.level=3
+            bricks.display_level3_brick()
             powerups.delete_super_power
-            slider.slider.length = 40
-            slider.slider.x_pos = 25
-            slider.slider.y_pos = 34
-            ball.ball.x_vel = 2
-            ball.ball.y_vel = -1
-            ball.ball.x_pos = 30
-            ball.ball.y_pos = 33
+            slider.game_slider.length = 40
+            slider.game_slider.x_pos = 40
+            slider.game_slider.y_pos = 34
+            ball.game_ball.x_vel = 2
+            ball.game_ball.y_vel = -1
+            ball.game_ball.x_pos = 70
+            ball.game_ball.y_pos = 33
 
-        if player.stats.level==3:
+        elif player.stats.level==3:
+            player.stats.status == 'P'
             powerups.delete_super_power
             print("CONGRATS, YOU WON!\n")
             exit()
