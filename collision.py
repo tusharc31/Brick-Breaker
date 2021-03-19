@@ -1,3 +1,4 @@
+# Uncomment os.system("aplay tick_low.mp3 &") for sound 
 import display_file
 import signal
 import copy
@@ -17,6 +18,7 @@ import powerups
 import random
 import bullet
 import os
+import boss
 from colorama import Fore, Back, Style
 
 
@@ -299,6 +301,10 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+                
+                if player.stats.level==3:
+                    boss.game_boss.lives=boss.game_boss.lives-1
+                
                 ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 flag = 1
@@ -307,6 +313,10 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+
+                if player.stats.level==3:
+                    boss.game_boss.lives=boss.game_boss.lives-1
+
                 ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
@@ -315,6 +325,10 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+
+                if player.stats.level==3:
+                    boss.game_boss.lives=boss.game_boss.lives-1
+
                 ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
@@ -323,6 +337,10 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+                
+                if player.stats.level==3:
+                    boss.game_boss.lives=boss.game_boss.lives-1
+
                 ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
@@ -562,14 +580,13 @@ def check_and_adjust():
     if ball.game_ball.y_pos + ball.game_ball.y_vel == slider.game_slider.y_pos and ball.game_ball.x_pos >= slider.game_slider.x_pos and ball.game_ball.x_pos+1 <= slider.game_slider.x_pos+slider.game_slider.length:
         ball.game_ball.reverse_y_vel()
 
-        if int(time.time()-player.stats.time)>=10:
+        if int(time.time()-player.stats.time)>=10 and player.stats.level<3:
 
             for k in range(len(bricks.lvl1_bricks)):
                 bricks.lvl1_bricks[k].y_pos = bricks.lvl1_bricks[k].y_pos+1
                 if bricks.lvl1_bricks[k].y_pos == 34:
                     print("SORRY, YOU LOST!\n")
                     exit()
-
 
             for k in range(len(bricks.lvl2_bricks)):
                 bricks.lvl2_bricks[k].y_pos = bricks.lvl2_bricks[k].y_pos+1
@@ -637,8 +654,6 @@ def check_and_adjust():
             powerups.super_power[k].image = ' '
             powerups.super_power[k].activate()
 
-
-
     if slider.game_slider.state > 0:
         slider.game_slider.remain = int(10+slider.game_slider.start-time.time())
         if time.time()-slider.game_slider.shoot>2:
@@ -648,10 +663,30 @@ def check_and_adjust():
             bullet.game_bullet.append(sample)
             slider.game_slider.shoot = time.time()
 
+    if player.stats.level==3:
+        if time.time()-slider.game_slider.shoot>4:
+            sample = bullet.bullet(bricks.nond_bricks[5].x_pos,bricks.nond_bricks[5].y_pos+1)
+            bullet.game_bullet.append(sample)
+            sample = bullet.bullet(bricks.nond_bricks[10].x_pos-1+6,bricks.nond_bricks[10].y_pos+1)
+            bullet.game_bullet.append(sample)
+            slider.game_slider.shoot = time.time()
 
+    if player.stats.level<3:
+        for k in range(len(bullet.game_bullet)):
+            bullet.game_bullet[k].y_pos=bullet.game_bullet[k].y_pos-1
 
-    for k in range(len(bullet.game_bullet)):
-        bullet.game_bullet[k].y_pos=bullet.game_bullet[k].y_pos-1
+    else:
+        k=len(bullet.game_bullet)-1
+        
+        while k>=0:
+            bullet.game_bullet[k].y_pos=bullet.game_bullet[k].y_pos+1
+
+            if bullet.game_bullet[k].y_pos == 34 and bullet.game_bullet[k].x_pos>=slider.game_slider.x_pos and bullet.game_bullet[k].x_pos+1<=slider.game_slider.x_pos+slider.game_slider.length:
+                player.stats.lives = player.stats.lives-1
+                bullet.game_bullet.pop(k)
+
+            k = k-1
+
 
     # FOR COLLISION WITH HORIZONTAL WALL
 
@@ -673,9 +708,9 @@ def check_and_adjust():
 
         render.reset()
 
-    if player.stats.lives == 0:
-        print("SORRY, YOU LOST!\n")
-        exit()
+    # if player.stats.lives == 0:
+    #     print("SORRY, YOU LOST!\n")
+    #     exit()
 
     rem_bricks_cnt = 0
     
@@ -698,6 +733,9 @@ def check_and_adjust():
     for k in range(len(bricks.rain_bricks)):
         if bricks.rain_bricks[k].vis==0:
             rem_bricks_cnt=rem_bricks_cnt+1
+
+    if player.stats.level == 3 and boss.game_boss.lives>0:
+        rem_bricks_cnt=1
 
     if rem_bricks_cnt == 0:
         bricks.lvl1_bricks = []
