@@ -16,10 +16,14 @@ import render
 import powerups
 import random
 import bullet
+import os
 from colorama import Fore, Back, Style
 
 
 def check_and_adjust():
+
+    # if player.details_of_player.level<3:
+        
     flag = 1
     # FOR COLLISION WITH LEVEL 1 BRICKS
     arr = []
@@ -30,6 +34,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -40,6 +45,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -50,6 +56,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -60,6 +67,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -115,6 +123,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -125,6 +134,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -135,6 +145,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -145,6 +156,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -167,6 +179,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -177,6 +190,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
+                #os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -187,6 +201,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -197,6 +212,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -220,6 +236,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -230,6 +247,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -240,6 +258,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -250,6 +269,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -279,6 +299,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 flag = 1
 
@@ -286,6 +307,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
@@ -293,6 +315,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
@@ -300,6 +323,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
+                ##os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 

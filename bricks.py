@@ -38,6 +38,11 @@ class rainbow_brick(bricks):
         super().__init__(x,y)
         self.level=1
 
+class rainbow_brick(bricks):
+    def __init__(self,x,y):
+        super().__init__(x,y)
+        self.level=1
+        
 lvl1_bricks = []
 lvl2_bricks = []
 lvl3_bricks = []
@@ -375,6 +380,29 @@ def display_level3_brick():
     global lvl3_bricks
     global nond_bricks
     global expl_bricks
+
+    # sample = non_destructible_brick(42,8)
+    # nond_bricks.append(sample)
+    # sample = non_destructible_brick(48,8)
+    # nond_bricks.append(sample)
+    # sample = non_destructible_brick(54,8)
+    # nond_bricks.append(sample)
+    # sample = non_destructible_brick(60,8)
+    # nond_bricks.append(sample)
+    # sample = non_destructible_brick(66,8)
+    # nond_bricks.append(sample)
+    # sample = non_destructible_brick(72,8)
+    # nond_bricks.append(sample)
+    # # sample = non_destructible_brick(78,5)
+    # # nond_bricks.append(sample)
+    # # sample = non_destructible_brick(88,5)
+    # # nond_bricks.append(sample)
+    # # sample = non_destructible_brick(94,5)
+    # # nond_bricks.append(sample)
+    # # sample = non_destructible_brick(100,5)
+    # # nond_bricks.append(sample)
+
+
 
     # Column of level 3 bricks
     sample = level3_brick(34,5)
