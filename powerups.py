@@ -74,7 +74,7 @@ class powerup_fastball(powerup):
         print('Activating power up')
         # if display_file.refresh_rate == 0.05:
         #     display_file.refresh_rate = 0.01
-        ball.game_ball.x_vel = 2*ball.game_ball.x_vel
+        ball.game_ball.x_vel = 4*ball.game_ball.x_vel
         # else:
         #     self.used = 0
         # exit()
@@ -82,7 +82,7 @@ class powerup_fastball(powerup):
     def deactivate(self):
         print('Deactivating power up')
         # display_file.refresh_rate = 0.05
-        if int(ball.game_ball.x_vel/2) != 0:
+        if int(ball.game_ball.x_vel/4) != 0:
             ball.game_ball.x_vel = int(ball.game_ball.x_vel/2)
 
 class powerup_grabball(powerup):

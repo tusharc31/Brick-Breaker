@@ -176,6 +176,21 @@ def display_and_input():
                     obj = 1
                     j = j+5
 
+            for k in range(len(bricks.rain_bricks)):
+                if bricks.rain_bricks[k].x_pos == j and bricks.rain_bricks[k].y_pos == i and bricks.rain_bricks[k].vis == 0:
+                    if int(time.time()-player.stats.time)%3 == 0:
+                        str = str + Back.WHITE + Fore.BLACK + "______"
+                        obj = 1
+                        j = j+5
+                    elif int(time.time()-player.stats.time)%3 == 1:
+                        str = str + Back.BLUE + Fore.BLACK + "______"
+                        obj = 1
+                        j = j+5
+                    elif int(time.time()-player.stats.time)%3 == 2:
+                        str = str + Back.YELLOW + Fore.BLACK + "______"
+                        obj = 1
+                        j = j+5
+
             if obj == 0:
                 str = str + Back.BLACK + " "
 

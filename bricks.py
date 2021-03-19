@@ -33,15 +33,23 @@ class explosive_brick(bricks):
     def __init__(self,x,y):
         super().__init__(x,y)
 
+class rainbow_brick(bricks):
+    def __init__(self,x,y):
+        super().__init__(x,y)
+        self.level=1
+
 lvl1_bricks = []
 lvl2_bricks = []
 lvl3_bricks = []
 nond_bricks = []
 expl_bricks = []
+rain_bricks = []
 
 ######################################################
 
 # Column of level 2 bricks
+sample = rainbow_brick(40,4)
+rain_bricks.append(sample) 
 sample = level3_brick(40,5)
 lvl3_bricks.append(sample)
 sample = level3_brick(40,6)
@@ -58,6 +66,8 @@ sample = level1_brick(40,11)
 lvl1_bricks.append(sample)
 sample = level1_brick(40,12)
 lvl1_bricks.append(sample)
+sample = rainbow_brick(40,13)
+rain_bricks.append(sample) 
 
 # Column of non-detructible bricks
 sample = non_destructible_brick(58,5)
@@ -78,6 +88,8 @@ sample = non_destructible_brick(58,12)
 nond_bricks.append(sample)
 
 # Column of level 2 bricks
+sample = rainbow_brick(76,4)
+rain_bricks.append(sample)
 sample = level1_brick(76,5)
 lvl1_bricks.append(sample)
 sample = level1_brick(76,6)
@@ -94,6 +106,8 @@ sample = level2_brick(76,11)
 lvl2_bricks.append(sample)
 sample = level2_brick(76,12)
 lvl2_bricks.append(sample)
+sample = rainbow_brick(76,13)
+rain_bricks.append(sample)
 
 #Column 1 including explosive bricks
 sample = explosive_brick(0,5)

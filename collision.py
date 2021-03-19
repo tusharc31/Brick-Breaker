@@ -162,6 +162,55 @@ def check_and_adjust():
         bricks.lvl3_bricks.pop(arr[ind])
         ind = ind - 1
 
+    ###################################################################
+    # # FOR COLLISION WITH RAIN BRICKS
+    arr = []
+    ind = 0
+    for k in range(len(bricks.rain_bricks)):
+        if bricks.rain_bricks[k].vis == 0 and flag == 1:
+            if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.rain_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.rain_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.rain_bricks[k].x_pos+6:
+                ball.game_ball.reverse_y_vel()
+                arr.append(k)
+                ind = ind+1
+                player.stats.score = player.stats.score + int(time.time()-player.stats.time)%3 + 1
+                flag = 1
+
+            elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.rain_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.rain_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.rain_bricks[k].x_pos) <= 0:
+                ball.game_ball.reverse_x_vel()
+                arr.append(k)
+                ind = ind+1
+                player.stats.score = player.stats.score + int(time.time()-player.stats.time)%3 + 1
+                flag = 1
+
+            elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.rain_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.rain_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.rain_bricks[k].x_pos+6:
+                ball.game_ball.reverse_x_vel()
+                arr.append(k)
+                ind = ind+1
+                player.stats.score = player.stats.score + int(time.time()-player.stats.time)%3 + 1
+                flag = 1
+
+            elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.rain_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.rain_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.rain_bricks[k].x_pos+6:
+                ball.game_ball.reverse_x_vel()
+                arr.append(k)
+                ind = ind+1
+                player.stats.score = player.stats.score + int(time.time()-player.stats.time)%3 + 1
+                flag = 1
+
+    ind = ind - 1
+
+    while ind >= 0:
+
+        if int(time.time()-player.stats.time)%3 == 1:
+            bricks.lvl1_bricks.append(bricks.rain_bricks[arr[ind]])
+        
+        elif int(time.time()-player.stats.time)%3 == 2:
+            bricks.lvl2_bricks.append(bricks.rain_bricks[arr[ind]])
+
+        bricks.rain_bricks.pop(arr[ind])
+        ind = ind - 1
+
+    #############################################################
+
     # FOR COLLISION WITH NON-DESTRUCTIBLE BRICKS
     for k in range(len(bricks.nond_bricks)):
         if bricks.nond_bricks[k].vis == 0 and flag == 1:
@@ -216,6 +265,47 @@ def check_and_adjust():
 
     if ball.game_ball.y_pos + ball.game_ball.y_vel == slider.game_slider.y_pos and ball.game_ball.x_pos >= slider.game_slider.x_pos and ball.game_ball.x_pos+1 <= slider.game_slider.x_pos+slider.game_slider.length:
         ball.game_ball.reverse_y_vel()
+
+        if int(time.time()-player.stats.time)>=10:
+
+            for k in range(len(bricks.lvl1_bricks)):
+                bricks.lvl1_bricks[k].y_pos = bricks.lvl1_bricks[k].y_pos+1
+                if bricks.lvl1_bricks[k].y_pos == 34:
+                    print("SORRY, YOU LOST!\n")
+                    exit()
+
+
+            for k in range(len(bricks.lvl2_bricks)):
+                bricks.lvl2_bricks[k].y_pos = bricks.lvl2_bricks[k].y_pos+1
+                if bricks.lvl2_bricks[k].y_pos == 34:
+                    print("SORRY, YOU LOST!\n")
+                    exit()
+
+            for k in range(len(bricks.lvl3_bricks)):
+                bricks.lvl3_bricks[k].y_pos = bricks.lvl3_bricks[k].y_pos+1
+                if bricks.lvl3_bricks[k].y_pos == 34:
+                    print("SORRY, YOU LOST!\n")
+                    exit()
+
+            for k in range(len(bricks.nond_bricks)):
+                bricks.nond_bricks[k].y_pos = bricks.nond_bricks[k].y_pos+1
+                if bricks.nond_bricks[k].y_pos == 34:
+                    print("SORRY, YOU LOST!\n")
+                    exit()
+
+            for k in range(len(bricks.expl_bricks)):
+                bricks.expl_bricks[k].y_pos = bricks.expl_bricks[k].y_pos+1
+                if bricks.expl_bricks[k].y_pos == 34:
+                    print("SORRY, YOU LOST!\n")
+                    exit()
+
+            for k in range(len(bricks.rain_bricks)):
+                bricks.rain_bricks[k].y_pos = bricks.rain_bricks[k].y_pos+1
+                if bricks.rain_bricks[k].y_pos == 34:
+                    print("SORRY, YOU LOST!\n")
+                    exit()
+        
+        
         if ball.game_ball.x_pos <= slider.game_slider.x_pos+slider.game_slider.length/5:
             ball.game_ball.x_vel = -2
         elif ball.game_ball.x_pos <= slider.game_slider.x_pos+2*slider.game_slider.length/5:
