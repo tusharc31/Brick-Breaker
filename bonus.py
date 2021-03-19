@@ -18,9 +18,13 @@ from colorama import Fore, Back, Style
 
 def chain_reaction(x, y):
 
-    abc = random.randint(0, 15)
+    abc = random.randint(0, 17)
 
-    if abc == 14:
+    if abc == 16 or abc == 17:
+        bruh = powerups.powerup_laser(x,y+8)
+        powerups.super_power.append(bruh)
+
+    if abc == 14 or abc == 15:
         bruh = powerups.powerup_fastball(x,y+8)
         powerups.super_power.append(bruh)
 

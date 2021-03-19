@@ -4,7 +4,7 @@ import slider
 import display_file
 import player
 import ball
-
+import bullet
 
 class powerup(position.position):
 
@@ -72,18 +72,13 @@ class powerup_fastball(powerup):
 
     def activate(self):
         print('Activating power up')
-        # if display_file.refresh_rate == 0.05:
-        #     display_file.refresh_rate = 0.01
         ball.game_ball.x_vel = 4*ball.game_ball.x_vel
-        # else:
-        #     self.used = 0
-        # exit()
 
     def deactivate(self):
         print('Deactivating power up')
-        # display_file.refresh_rate = 0.05
         if int(ball.game_ball.x_vel/4) != 0:
             ball.game_ball.x_vel = int(ball.game_ball.x_vel/2)
+
 
 class powerup_grabball(powerup):
 
@@ -131,6 +126,24 @@ class powerup_multiplier(powerup):
         print('Deactivating power up')
         ball.cnt = ball.cnt - 1 # Automatically remove last
 
+class powerup_laser(powerup):
+
+    def __init__(self, x, y):
+        self.hash = 9
+        self.image = '▲'
+        self.last = time.time()
+        super().__init__(x, y)
+
+    def activate(self):
+        print('Activating power up')
+        self.last = time.time()
+        slider.game_slider.start = time.time()
+        slider.game_slider.state=slider.game_slider.state+1
+
+    def deactivate(self):
+        print('Deactivating power up')
+        slider.game_slider.state=slider.game_slider.state-1
+
 super_power = []
 
 def delete_super_power():
@@ -152,3 +165,4 @@ def disable_powerup():
             super_power.pop(k)
 
         k = k-1
+

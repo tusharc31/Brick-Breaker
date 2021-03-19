@@ -4,6 +4,10 @@ import random
 class slider(position.position):
     def __init__(self,x,y):
         self.length = 40
+        self.state = 0
+        self.shoot = -1
+        self.remain = 0
+        self.start = -1
         super().set_position(x,y)
 
     def move_left(self):

@@ -186,11 +186,13 @@ def clear_all_bricks():
     global lvl1_bricks
     global lvl2_bricks
     global lvl3_bricks
+    global rain_bricks
     global nond_bricks
     global expl_bricks
     lvl1_bricks = []
     lvl2_bricks = []
     lvl3_bricks = []
+    rain_bricks = []
     nond_bricks = []
     expl_bricks = []
 

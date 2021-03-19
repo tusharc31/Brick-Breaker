@@ -11,4 +11,4 @@ class details_of_player():
     def decrease_life(self):
         self.lives = self.lives - 1
 
-stats = details_of_player('P',0,time.time(),3,1)
+stats = details_of_player('P',0,time.time(),5,1)

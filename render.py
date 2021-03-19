@@ -16,6 +16,7 @@ import time
 import collision
 import random
 import powerups
+import bullet
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 screen = display_file.display()
@@ -44,6 +45,9 @@ def reset ():
     player.stats.status = 'P'
     slider.game_slider = slider.slider(random.randint(0,50),34)
     ball.game_ball = ball.ball(random.randint(slider.game_slider.x_pos, slider.game_slider.x_pos+slider.game_slider.length-2),33)
+    slider.game_slider.state=0
+    powerups.super_power = []
+    bullet.game_bullet = []
 
 
 def display_and_input():
@@ -81,13 +85,22 @@ def display_and_input():
             player.stats.status = 'A'
 
         if c[k] == 'L' or c[k] == 'l':
+            bricks.lvl1_bricks = []
+            bricks.lvl2_bricks = []
+            bricks.lvl3_bricks = []
+            bricks.nond_bricks = []
+            bricks.expl_bricks = []
+            bricks.rain_bricks = []
+            bullet.game_bullet = []
             bricks.clear_all_bricks()
+            slider.game_slider.state=0
+            bullet.game_bullet = []
 
             if player.stats.level==1:
                 player.stats.status = 'P'
                 player.stats.level=2
                 bricks.display_level2_brick()
-                powerups.delete_super_power
+                powerups.super_power = []
                 slider.game_slider.length = 40
                 slider.game_slider.x_pos = 20
                 slider.game_slider.y_pos = 34
@@ -101,7 +114,7 @@ def display_and_input():
                 player.stats.status = 'P'
                 player.stats.level=3
                 bricks.display_level3_brick()
-                powerups.delete_super_power
+                powerups.super_power = []
                 slider.game_slider.length = 40
                 slider.game_slider.x_pos = 40
                 slider.game_slider.y_pos = 34
@@ -112,7 +125,7 @@ def display_and_input():
 
             elif player.stats.level==3:
                 player.stats.status == 'P'
-                powerups.delete_super_power
+                powerups.super_power = []
                 print("CONGRATS, YOU WON!\n")
                 exit()
 
@@ -131,7 +144,10 @@ def display_and_input():
             if slider.game_slider.x_pos == j and slider.game_slider.y_pos == i:
                 for k in range(slider.game_slider.length):
                     if (j<120):
-                        str = str + Back.GREEN + " "
+                        if slider.game_slider.state==0:
+                            str = str + Back.GREEN + " "
+                        else:
+                            str = str + Back.RED + " "
                         j = j+1
                     obj = 1
                 j = j-1
@@ -140,6 +156,12 @@ def display_and_input():
                 str = str + Fore.GREEN + "🔴"
                 j = j+1
                 obj = 1
+
+            for k in range(len(bullet.game_bullet)):
+                if bullet.game_bullet[k].x_pos == j and bullet.game_bullet[k].y_pos == i:
+                    str = str + Back.RED + Fore.RED + " " #▲
+                    obj = 1
+                    j = j
 
             for k in range(len(powerups.super_power)):
                 if powerups.super_power[k].x_pos == j and powerups.super_power[k].y_pos == i:
@@ -201,8 +223,9 @@ def display_and_input():
 
     subprocess.call("clear")
     print()
-    print(" SCORE = ", player.stats.score, "         LIVES REMAINING = ", player.stats.lives,
-          "         TIME PLAYED = ", int(time.time()-player.stats.time), "seconds", "         LEVEL = ", player.stats.level)
+    print(" SCORE = ", player.stats.score, "     LIVES REMAINING = ", player.stats.lives,
+          "     TIME PLAYED = ", int(time.time()-player.stats.time), "seconds", "     LEVEL = ", player.stats.level,
+          "     LASERS TIME = ", max(slider.game_slider.remain,0))
     print()
     print(str)
     print()
