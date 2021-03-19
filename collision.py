@@ -27,6 +27,9 @@ def check_and_adjust():
     for k in range(len(bricks.lvl1_bricks)):
         if bricks.lvl1_bricks[k].vis == 0 and flag == 1:
             if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.lvl1_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.lvl1_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.lvl1_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -34,6 +37,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.lvl1_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.lvl1_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.lvl1_bricks[k].x_pos) <= 0:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -41,6 +47,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.lvl1_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.lvl1_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.lvl1_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -48,6 +57,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.lvl1_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.lvl1_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.lvl1_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -58,8 +70,13 @@ def check_and_adjust():
 
     while ind >= 0:
 
-        abc = random.randint(0, 17)
-        # abc=16
+        abc = random.randint(0, 19)
+        # abc=19
+
+        if abc == 18 or abc == 19:
+            bruh = powerups.powerup_fireball(
+                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+            powerups.super_power.append(bruh)
 
         if abc == 16 or abc == 17:
             bruh = powerups.powerup_laser(
@@ -95,6 +112,9 @@ def check_and_adjust():
     for k in range(len(bricks.lvl2_bricks)):
         if bricks.lvl2_bricks[k].vis == 0 and flag == 1:
             if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.lvl2_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.lvl2_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.lvl2_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -102,6 +122,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.lvl2_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.lvl2_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.lvl2_bricks[k].x_pos) <= 0:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -109,6 +132,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.lvl2_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.lvl2_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.lvl2_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -116,6 +142,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.lvl2_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.lvl2_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.lvl2_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -135,6 +164,9 @@ def check_and_adjust():
         if bricks.lvl3_bricks[k].vis == 0 and flag == 1:
 
             if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.lvl3_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.lvl3_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.lvl3_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -142,6 +174,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.lvl3_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.lvl3_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.lvl3_bricks[k].x_pos) <= 0:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -149,6 +184,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.lvl3_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.lvl3_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.lvl3_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -156,6 +194,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.lvl3_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.lvl3_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.lvl3_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -176,6 +217,9 @@ def check_and_adjust():
     for k in range(len(bricks.rain_bricks)):
         if bricks.rain_bricks[k].vis == 0 and flag == 1:
             if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.rain_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.rain_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.rain_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -183,6 +227,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.rain_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.rain_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.rain_bricks[k].x_pos) <= 0:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -190,6 +237,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.rain_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.rain_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.rain_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -197,6 +247,9 @@ def check_and_adjust():
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.rain_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.rain_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.rain_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -223,18 +276,30 @@ def check_and_adjust():
         if bricks.nond_bricks[k].vis == 0 and flag == 1:
 
             if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.nond_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.nond_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.nond_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
                 ball.game_ball.reverse_y_vel()
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.nond_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.nond_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.nond_bricks[k].x_pos) <= 0:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.nond_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.nond_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.nond_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
             elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.nond_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.nond_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.nond_bricks[k].x_pos+6:
+                if ball.game_ball.state>0:
+                    bonus.chain_reaction(
+                    bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
@@ -291,7 +356,13 @@ def check_and_adjust():
 
     while ind >= 0:
 
-        abc = random.randint(0, 17)
+        abc = random.randint(0, 19)
+        # abc=19
+
+        if abc == 18 or abc == 19:
+            bruh = powerups.powerup_fireball(
+                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+            powerups.super_power.append(bruh)
 
         if abc == 16 or abc == 17:
             bruh = powerups.powerup_laser(

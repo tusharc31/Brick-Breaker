@@ -10,6 +10,7 @@ class ball(position.position, existence.existence):
         self.y_vel = -1
         self.grab_status = 0
         self.thru_status = 0
+        self.state = 0
         super().set_position(x, y)
 
     def reverse_y_vel(self):

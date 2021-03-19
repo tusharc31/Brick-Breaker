@@ -96,6 +96,26 @@ class powerup_grabball(powerup):
         ball.game_ball.grab_status = 0
         player.stats.status = 'A'
 
+
+
+class powerup_fireball(powerup):
+
+    def __init__(self, x, y):
+        self.hash = 9
+        self.image = '🔥'
+        super().__init__(x, y)
+
+    def activate(self):
+        print('Activating power up')
+        ball.game_ball.state = ball.game_ball.state+1
+
+    def deactivate(self):
+        print('Deactivating power up')
+        ball.game_ball.state = ball.game_ball.state-1
+
+
+
+
 class powerup_thruball(powerup):
 
     def __init__(self, x, y):
