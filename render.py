@@ -64,16 +64,18 @@ def display_and_input():
                     slider.game_slider.x_pos = slider.game_slider.x_pos - 10
                     
                     if player.stats.level==3:
-                        if bricks.nond_bricks[5].x_pos>=6:
+                        if bricks.nond_bricks[5].x_pos>=6:# and slider.game_slider.x_pos>0:
                             for k1 in range(len(bricks.nond_bricks)):
-                                bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos - 6
+                                if bricks.nond_bricks[k1].y_pos!=12:
+                                    bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos - 6
                 
                 else:
 
                     if player.stats.level==3:
-                        if bricks.nond_bricks[5].x_pos>=6:
+                        if bricks.nond_bricks[5].x_pos>=6:# and slider.game_slider.x_pos>0:
                             for k1 in range(len(bricks.nond_bricks)):
-                                bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos - 6
+                                if bricks.nond_bricks[k1].y_pos!=12:
+                                    bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos - 6
 
                     slider.game_slider.x_pos = 0
 
@@ -83,9 +85,10 @@ def display_and_input():
                     ball.game_ball.x_pos = ball.game_ball.x_pos - 10
                     
                     if player.stats.level==3:
-                        if bricks.nond_bricks[5].x_pos>=6:
+                        if bricks.nond_bricks[5].x_pos>=6:# and slider.game_slider.x_pos>0:
                             for k1 in range(len(bricks.nond_bricks)):
-                                bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos - 6
+                                if bricks.nond_bricks[k1].y_pos!=12:
+                                    bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos - 6
 
         if c[k] == 'D' or c[k] == 'd':
             if player.stats.status == 'A':
@@ -93,16 +96,18 @@ def display_and_input():
                     slider.game_slider.x_pos = slider.game_slider.x_pos + 10
                     
                     if player.stats.level==3:
-                        if bricks.nond_bricks[10].x_pos+6<=114:
+                        if bricks.nond_bricks[10].x_pos+6<=114:# and slider.game_slider.x_pos + slider.game_slider.length < 120:
                             for k1 in range(len(bricks.nond_bricks)):
-                                bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos + 6
+                                if bricks.nond_bricks[k1].y_pos!=12:
+                                    bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos + 6
                 
                 else:
 
                     if player.stats.level==3:
-                        if bricks.nond_bricks[10].x_pos+6<=114:
+                        if bricks.nond_bricks[10].x_pos+6<=114:# and slider.game_slider.x_pos + slider.game_slider.length < 120:
                             for k1 in range(len(bricks.nond_bricks)):
-                                bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos + 6
+                                if bricks.nond_bricks[k1].y_pos!=12:
+                                    bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos + 6
 
                     slider.game_slider.x_pos = 120-slider.game_slider.length
 
@@ -111,9 +116,10 @@ def display_and_input():
                 if slider.game_slider.x_pos + slider.game_slider.length + 10 < 120:
                     
                     if player.stats.level==3:
-                        if bricks.nond_bricks[10].x_pos+6<=114:
+                        if bricks.nond_bricks[10].x_pos+6<=114:# and slider.game_slider.x_pos + slider.game_slider.length < 120:
                             for k1 in range(len(bricks.nond_bricks)):
-                                bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos + 6
+                                if bricks.nond_bricks[k1].y_pos!=12:
+                                    bricks.nond_bricks[k1].x_pos = bricks.nond_bricks[k1].x_pos + 6
                     
                     slider.game_slider.x_pos = slider.game_slider.x_pos + 10
                     ball.game_ball.x_pos = ball.game_ball.x_pos + 10
@@ -194,11 +200,6 @@ def display_and_input():
                 j = j+1
                 obj = 1
 
-            for k in range(len(bullet.game_bullet)):
-                if bullet.game_bullet[k].x_pos == j and bullet.game_bullet[k].y_pos == i:
-                    str = str + Back.LIGHTRED_EX + Fore.RED + " " #▲
-                    obj = 1
-                    j = j
 
             for k in range(len(powerups.super_power)):
                 if powerups.super_power[k].x_pos == j and powerups.super_power[k].y_pos == i:
@@ -232,11 +233,15 @@ def display_and_input():
 
             else:
                 for k in range(len(bricks.nond_bricks)):
-                    if bricks.nond_bricks[k].x_pos == j and bricks.nond_bricks[k].y_pos == i and bricks.nond_bricks[k].vis == 0:
-                        str = str + Back.LIGHTWHITE_EX + Fore.BLACK + "  " + Back.RED + Fore.BLACK + "  " + Back.LIGHTWHITE_EX + Fore.BLACK + "  "
+                    if bricks.nond_bricks[k].x_pos == j and bricks.nond_bricks[k].y_pos == i and bricks.nond_bricks[k].y_pos ==12 and bricks.nond_bricks[k].vis == 0:
+                        str = str + Back.LIGHTRED_EX + Fore.BLACK + "______"
                         obj = 1
                         j = j+5
 
+                    elif bricks.nond_bricks[k].x_pos == j and bricks.nond_bricks[k].y_pos == i and bricks.nond_bricks[k].vis == 0:
+                        str = str + Back.LIGHTWHITE_EX + Fore.BLACK + "  " + Back.RED + Fore.BLACK + "  " + Back.LIGHTWHITE_EX + Fore.BLACK + "  "
+                        obj = 1
+                        j = j+5
 
             for k in range(len(bricks.expl_bricks)):
                 if bricks.expl_bricks[k].x_pos == j and bricks.expl_bricks[k].y_pos == i and bricks.expl_bricks[k].vis == 0:
@@ -259,6 +264,12 @@ def display_and_input():
                         obj = 1
                         j = j+5
 
+            for k in range(len(bullet.game_bullet)):
+                if bullet.game_bullet[k].x_pos == j and bullet.game_bullet[k].y_pos == i:
+                    str = str + Back.LIGHTRED_EX + Fore.RED + " " #▲
+                    obj = 1
+                    j = j
+            
             if obj == 0:
                 str = str + Back.BLACK + " "
 
@@ -277,7 +288,10 @@ def display_and_input():
     if player.stats.level<3:
         print(" Boss lives = You're too noob to face the boss yet!")
     if player.stats.level==3:
-        print(" Boss lives = ", boss.game_boss.lives)
+        health_bar = ''
+        for abc in range(boss.game_boss.lives-1):
+            health_bar = health_bar + Back.LIGHTRED_EX + " "
+        print(" Boss health = ", health_bar)
     print()
     print(str)
     print()

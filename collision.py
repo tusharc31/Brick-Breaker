@@ -80,38 +80,39 @@ def check_and_adjust():
 
     while ind >= 0:
 
-        abc = random.randint(0, 19)
-        # abc=19
+        if player.stats.level<3:
 
-        if abc == 18 or abc == 19:
-            bruh = powerups.powerup_fireball(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
+            abc = random.randint(0, 19)
 
-        if abc == 16 or abc == 17:
-            bruh = powerups.powerup_laser(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
+            if abc == 18 or abc == 19:
+                bruh = powerups.powerup_fireball(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
 
-        if abc == 14 or abc == 15:
-            bruh = powerups.powerup_fastball(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
+            if abc == 16 or abc == 17:
+                bruh = powerups.powerup_laser(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
 
-        if abc == 13 or abc == 12:
-            bruh = powerups.powerup_grabball(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
+            if abc == 14 or abc == 15:
+                bruh = powerups.powerup_fastball(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
 
-        if abc == 11 or abc == 10:
-            bruh = powerups.powerup_shrink(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
+            if abc == 13 or abc == 12:
+                bruh = powerups.powerup_grabball(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
 
-        if abc == 9 or abc == 8:
-            bruh = powerups.powerup_expand(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
+            if abc == 11 or abc == 10:
+                bruh = powerups.powerup_shrink(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            if abc == 9 or abc == 8:
+                bruh = powerups.powerup_expand(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
 
         bricks.lvl1_bricks.pop(arr[ind])
         ind = ind - 1
@@ -302,7 +303,7 @@ def check_and_adjust():
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
                 
-                if player.stats.level==3:
+                if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
                 
                 ##os.system("aplay tick_low.mp3 &")
@@ -314,7 +315,7 @@ def check_and_adjust():
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
 
-                if player.stats.level==3:
+                if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
 
                 ##os.system("aplay tick_low.mp3 &")
@@ -326,7 +327,7 @@ def check_and_adjust():
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
 
-                if player.stats.level==3:
+                if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
 
                 ##os.system("aplay tick_low.mp3 &")
@@ -338,7 +339,7 @@ def check_and_adjust():
                     bonus.chain_reaction(
                     bricks.nond_bricks[k].x_pos, bricks.nond_bricks[k].y_pos)
                 
-                if player.stats.level==3:
+                if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
 
                 ##os.system("aplay tick_low.mp3 &")
@@ -378,61 +379,63 @@ def check_and_adjust():
     ###########################################################################################################################
 
     # FOR COLLISION WITH LEVEL 1 BRICKS
-    arr = []
-    ind = 0
-    for k in range(len(bricks.lvl1_bricks)):
-        if bricks.lvl1_bricks[k].vis == 0 and flag == 1:
 
-            lol = len(bullet.game_bullet)
-            lol = lol-1
-            
-            while lol>=0:
-                if bullet.game_bullet[lol].y_pos-1 == bricks.lvl1_bricks[k].y_pos and bullet.game_bullet[lol].x_pos>=bricks.lvl1_bricks[k].x_pos and bullet.game_bullet[lol].x_pos+1<=bricks.lvl1_bricks[k].x_pos+6:
-                    arr.append(k)
-                    ind = ind+1
-                    bullet.game_bullet.pop(lol)
-                    player.stats.score = player.stats.score + 1
-                lol=lol-1
+    if player.stats.level<3:
+        arr = []
+        ind = 0
+        for k in range(len(bricks.lvl1_bricks)):
+            if bricks.lvl1_bricks[k].vis == 0 and flag == 1:
 
-    ind = ind - 1
+                lol = len(bullet.game_bullet)
+                lol = lol-1
+                
+                while lol>=0:
+                    if bullet.game_bullet[lol].y_pos-1 == bricks.lvl1_bricks[k].y_pos and bullet.game_bullet[lol].x_pos>=bricks.lvl1_bricks[k].x_pos and bullet.game_bullet[lol].x_pos+1<=bricks.lvl1_bricks[k].x_pos+6:
+                        arr.append(k)
+                        ind = ind+1
+                        bullet.game_bullet.pop(lol)
+                        player.stats.score = player.stats.score + 1
+                    lol=lol-1
 
-    while ind >= 0:
-
-        abc = random.randint(0, 19)
-        # abc=19
-
-        if abc == 18 or abc == 19:
-            bruh = powerups.powerup_fireball(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
-
-        if abc == 16 or abc == 17:
-            bruh = powerups.powerup_laser(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
-
-        if abc == 14 or abc == 15:
-            bruh = powerups.powerup_fastball(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
-
-        if abc == 13 or abc == 12:
-            bruh = powerups.powerup_grabball(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
-
-        if abc == 11 or abc == 10:
-            bruh = powerups.powerup_shrink(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
-
-        if abc == 9 or abc == 8:
-            bruh = powerups.powerup_expand(
-                bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
-            powerups.super_power.append(bruh)
-
-        bricks.lvl1_bricks.pop(arr[ind])
         ind = ind - 1
+
+        while ind >= 0:
+
+            abc = random.randint(0, 19)
+            # abc=19
+
+            if abc == 18 or abc == 19:
+                bruh = powerups.powerup_fireball(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            if abc == 16 or abc == 17:
+                bruh = powerups.powerup_laser(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            if abc == 14 or abc == 15:
+                bruh = powerups.powerup_fastball(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            if abc == 13 or abc == 12:
+                bruh = powerups.powerup_grabball(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            if abc == 11 or abc == 10:
+                bruh = powerups.powerup_shrink(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            if abc == 9 or abc == 8:
+                bruh = powerups.powerup_expand(
+                    bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
+                powerups.super_power.append(bruh)
+
+            bricks.lvl1_bricks.pop(arr[ind])
+            ind = ind - 1
 
 
     ############ FOR BULLET AND LEVEL 2 BRICKS
@@ -487,17 +490,19 @@ def check_and_adjust():
     
 
     # FOR BULLET AND NON-DESTRUCTIBLE BRICKS
-    for k in range(len(bricks.nond_bricks)):
-        if bricks.nond_bricks[k].vis == 0 and flag == 1:
 
-            lol = len(bullet.game_bullet)
-            lol = lol-1
-            
-            while lol>=0:
-                if bullet.game_bullet[lol].y_pos-1 == bricks.nond_bricks[k].y_pos and bullet.game_bullet[lol].x_pos>=bricks.nond_bricks[k].x_pos and bullet.game_bullet[lol].x_pos+1<=bricks.nond_bricks[k].x_pos+6:
-                    bullet.game_bullet.pop(lol)
-                    player.stats.score = player.stats.score + 1
-                lol=lol-1
+    if player.stats.level<3:
+        for k in range(len(bricks.nond_bricks)):
+            if bricks.nond_bricks[k].vis == 0 and flag == 1:
+
+                lol = len(bullet.game_bullet)
+                lol = lol-1
+                
+                while lol>=0:
+                    if bullet.game_bullet[lol].y_pos-1 == bricks.nond_bricks[k].y_pos and bullet.game_bullet[lol].x_pos>=bricks.nond_bricks[k].x_pos and bullet.game_bullet[lol].x_pos+1<=bricks.nond_bricks[k].x_pos+6:
+                        bullet.game_bullet.pop(lol)
+                        player.stats.score = player.stats.score + 1
+                    lol=lol-1
 
 
     ####### FOR BULLET AND RAINBOW
@@ -544,31 +549,6 @@ def check_and_adjust():
                     bonus.chain_reaction(
                     bricks.expl_bricks[k].x_pos, bricks.expl_bricks[k].y_pos)
                 lol=lol-1
-
-            # if ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.expl_bricks[k].y_pos and ball.game_ball.x_pos >= bricks.expl_bricks[k].x_pos and ball.game_ball.x_pos+1 <= bricks.expl_bricks[k].x_pos+6:
-            #     ball.game_ball.reverse_y_vel()
-            #     flag = 1
-            #     bonus.chain_reaction(
-            #         bricks.expl_bricks[k].x_pos, bricks.expl_bricks[k].y_pos)
-
-            # elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.expl_bricks[k].y_pos and (ball.game_ball.x_pos+ball.game_ball.x_vel-bricks.expl_bricks[k].x_pos)*(ball.game_ball.x_pos+ball.game_ball.x_vel+1-bricks.expl_bricks[k].x_pos) <= 0:
-            #     ball.game_ball.reverse_x_vel()
-            #     flag = 1
-            #     bonus.chain_reaction(
-            #         bricks.expl_bricks[k].x_pos, bricks.expl_bricks[k].y_pos)
-
-            # elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos == bricks.expl_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.expl_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.expl_bricks[k].x_pos+6:
-            #     ball.game_ball.reverse_x_vel()
-            #     flag = 1
-            #     bonus.chain_reaction(
-            #         bricks.expl_bricks[k].x_pos, bricks.expl_bricks[k].y_pos)
-
-            # elif ball.game_ball.x_vel != 0 and ball.game_ball.y_pos + ball.game_ball.y_vel == bricks.expl_bricks[k].y_pos and ball.game_ball.x_pos+ball.game_ball.x_vel >= bricks.expl_bricks[k].x_pos and ball.game_ball.x_pos+ball.game_ball.x_vel+1 <= bricks.expl_bricks[k].x_pos+6:
-            #     ball.game_ball.reverse_x_vel()
-            #     flag = 1
-            #     bonus.chain_reaction(
-            #         bricks.expl_bricks[k].x_pos, bricks.expl_bricks[k].y_pos)
-
 
 
     ###########################################################################################################################
@@ -664,7 +644,7 @@ def check_and_adjust():
             slider.game_slider.shoot = time.time()
 
     if player.stats.level==3:
-        if time.time()-slider.game_slider.shoot>4:
+        if time.time()-slider.game_slider.shoot>2:
             sample = bullet.bullet(bricks.nond_bricks[5].x_pos,bricks.nond_bricks[5].y_pos+1)
             bullet.game_bullet.append(sample)
             sample = bullet.bullet(bricks.nond_bricks[10].x_pos-1+6,bricks.nond_bricks[10].y_pos+1)
@@ -712,6 +692,32 @@ def check_and_adjust():
     #     print("SORRY, YOU LOST!\n")
     #     exit()
 
+
+    # For Spawning protection below the UFO
+
+    if boss.game_boss.lives<=6 and boss.game_boss.guard1==0:
+        
+        boss.game_boss.guard1=1
+
+        x_cord = 0
+
+        while x_cord < 120:
+            sample = bricks.level1_brick(x_cord,14)
+            bricks.lvl1_bricks.append(sample)
+            x_cord = x_cord + 12
+
+    if boss.game_boss.lives<=2 and boss.game_boss.guard2==0:
+        
+        boss.game_boss.guard2=1
+
+        x_cord = 6
+
+        while x_cord < 120:
+            sample = bricks.level1_brick(x_cord,16)
+            bricks.lvl1_bricks.append(sample)
+            x_cord = x_cord + 12
+
+
     rem_bricks_cnt = 0
     
     for k in range(len(bricks.lvl1_bricks)):
@@ -736,6 +742,9 @@ def check_and_adjust():
 
     if player.stats.level == 3 and boss.game_boss.lives>0:
         rem_bricks_cnt=1
+
+    if player.stats.level == 3 and boss.game_boss.lives==0:
+        rem_bricks_cnt=0
 
     if rem_bricks_cnt == 0:
         bricks.lvl1_bricks = []
