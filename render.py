@@ -297,6 +297,7 @@ def display_and_input():
     print(" PRESS SPACE TO RELEASE THE BALL")
     print(" MOVE YOUR PADDLE - PRESS A TO MOVE LEFT AND D TO MOVE RIGHT")
     print(" TO QUIT, PRESS Q")
+    print(" TO JUMP TO NEXT LEVE, PRESS L")
     print()
     str = Back.WHITE + "            "
     print(str, "LEVEL-1 BRICKS")
