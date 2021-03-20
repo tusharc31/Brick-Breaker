@@ -427,3 +427,27 @@ def display_level3_brick():
     sample = non_destructible_brick(81,12)
     nond_bricks.append(sample)
 
+    sample = non_destructible_brick(48,6)
+    nond_bricks.append(sample)
+    sample = non_destructible_brick(54,6)
+    nond_bricks.append(sample)
+    sample = non_destructible_brick(60,6)
+    nond_bricks.append(sample)
+    sample = non_destructible_brick(66,6)
+    nond_bricks.append(sample)
+
+    sample = non_destructible_brick(51,5)
+    nond_bricks.append(sample)
+    sample = non_destructible_brick(57,5)
+    nond_bricks.append(sample)
+    sample = non_destructible_brick(63,5)
+    nond_bricks.append(sample)
+
+    sample = non_destructible_brick(54,4)
+    nond_bricks.append(sample)
+    sample = non_destructible_brick(60,4)
+    nond_bricks.append(sample)
+
+    sample = non_destructible_brick(57,3)
+    nond_bricks.append(sample)
+

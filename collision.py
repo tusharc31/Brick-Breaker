@@ -1,4 +1,5 @@
-# Uncomment os.system("aplay tick_low.mp3 &") for sound 
+# Comment all os.system("aplay tick_low.mp3 &") to stop sound 
+
 import display_file
 import signal
 import copy
@@ -36,7 +37,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -47,7 +48,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -58,7 +59,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -69,7 +70,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl1_bricks[k].x_pos, bricks.lvl1_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -82,14 +83,14 @@ def check_and_adjust():
 
         if player.stats.level<3:
 
-            abc = random.randint(0, 19)
+            abc = random.randint(0, 25)
 
-            if abc == 18 or abc == 19:
+            if abc == 19 or abc == 20 or abc == 21:
                 bruh = powerups.powerup_fireball(
                     bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
                 powerups.super_power.append(bruh)
 
-            if abc == 16 or abc == 17:
+            if abc == 16 or abc == 17 or abc == 18:
                 bruh = powerups.powerup_laser(
                     bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
                 powerups.super_power.append(bruh)
@@ -126,7 +127,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -137,7 +138,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -148,7 +149,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -159,7 +160,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl2_bricks[k].x_pos, bricks.lvl2_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -182,7 +183,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -193,7 +194,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
-                #os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -204,7 +205,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -215,7 +216,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.lvl3_bricks[k].x_pos, bricks.lvl3_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -239,7 +240,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 arr.append(k)
                 ind = ind+1
@@ -250,7 +251,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -261,7 +262,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -272,7 +273,7 @@ def check_and_adjust():
                 if ball.game_ball.state>0:
                     bonus.chain_reaction(
                     bricks.rain_bricks[k].x_pos, bricks.rain_bricks[k].y_pos)
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 arr.append(k)
                 ind = ind+1
@@ -306,7 +307,7 @@ def check_and_adjust():
                 if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
                 
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_y_vel()
                 flag = 1
 
@@ -318,7 +319,7 @@ def check_and_adjust():
                 if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
 
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
@@ -330,7 +331,7 @@ def check_and_adjust():
                 if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
 
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
@@ -342,7 +343,7 @@ def check_and_adjust():
                 if player.stats.level==3 and bricks.nond_bricks[k].y_pos!=12:
                     boss.game_boss.lives=boss.game_boss.lives-1
 
-                ##os.system("aplay tick_low.mp3 &")
+                os.system("aplay tick_low.mp3 &")
                 ball.game_ball.reverse_x_vel()
                 flag = 1
 
@@ -401,15 +402,15 @@ def check_and_adjust():
 
         while ind >= 0:
 
-            abc = random.randint(0, 19)
+            abc = random.randint(0, 25)
             # abc=19
 
-            if abc == 18 or abc == 19:
+            if abc == 19 or abc == 20 or abc==21:
                 bruh = powerups.powerup_fireball(
                     bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
                 powerups.super_power.append(bruh)
 
-            if abc == 16 or abc == 17:
+            if abc == 16 or abc == 17 or abc==18:
                 bruh = powerups.powerup_laser(
                     bricks.lvl1_bricks[arr[ind]].x_pos, bricks.lvl1_bricks[arr[ind]].y_pos+8)
                 powerups.super_power.append(bruh)
@@ -560,7 +561,7 @@ def check_and_adjust():
     if ball.game_ball.y_pos + ball.game_ball.y_vel == slider.game_slider.y_pos and ball.game_ball.x_pos >= slider.game_slider.x_pos and ball.game_ball.x_pos+1 <= slider.game_slider.x_pos+slider.game_slider.length:
         ball.game_ball.reverse_y_vel()
 
-        if int(time.time()-player.stats.time)>=10 and player.stats.level<3:
+        if int(time.time()-player.stats.time)>=25 and player.stats.level<3:
 
             for k in range(len(bricks.lvl1_bricks)):
                 bricks.lvl1_bricks[k].y_pos = bricks.lvl1_bricks[k].y_pos+1
